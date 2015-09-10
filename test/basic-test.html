@@ -1,56 +1,47 @@
-<!doctype html>
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="../../web-component-tester/browser.js"></script>
-
-    <!-- Step 1: import the element to test -->
-    <link rel="import" href="../ext-button.html">
-  </head>
-  <body>
-
-    <!-- You can use the document as a place to set up your fixtures. -->
-    <ext-button id="extMyButton"></ext-button>
-
-    <script>
-      var myEl = document.querySelector('ext-button');
-
-      suite('<ext-button>', function() {
-
-        test('defines the "author" property', function() {
-          assert.equal(myEl.author.name, 'Jacques Bonet');
-          assert.equal(myEl.author.image, 'http://addyosmani.com/blog/wp-content/uploads/2013/04/unicorn.jpg');
-        });
-
-        test('says hello', function() {
-          assert.equal(myEl.sayHello(), 'ext-button says, Hello World!');
-
-          var greetings = myEl.sayHello('greetings Earthlings');
-          assert.equal(greetings, 'ext-button says, greetings Earthlings');
-        });
-
-        test('fires lasers', function(done) {
-          myEl.addEventListener('ext-button-lasers', function(event) {
-            assert.equal(event.detail.sound, 'Pew pew!');
-            done();
-          });
-          myEl.fireLasers();
-        });
-
-      });
-    </script>
-
-  </body>
-</html>
+<xin-form>
+  <div class="row">
+    <div class="col-sm-6">
+      <xin-input label="Pseudo" ng-model="utilisateur.pseudo" required=""></xin-input>
+    </div>
+    <div class="col-sm-6">
+      <xin-select label="role" ng-model="utilisateur.role" ng-disabled="!isAdmin" class="xin-placeholders">
+        <option value="Administrateur">Administrateur</option>
+        <option value="Validateur">Validateur</option>
+        <option value="Observateur">Observateur</option>
+      </xin-select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <xin-input label="Prénom" ng-model="utilisateur.prenom"></xin-input>
+    </div>
+    <div class="col-sm-6">
+      <xin-input label="Nom" ng-model="utilisateur.nom"></xin-input>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <xin-email ng-model="utilisateur.email" required=""></xin-email>
+    </div>
+    <div class="col-sm-6">
+      <xin-input label="Organisation" ng-model="utilisateur.organisation"></xin-input>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <xin-textarea label="Adresse" rows="4" ng-model="utilisateur.adresse"></xin-textarea>
+    </div>
+    <div class="col-sm-6">
+      <xin-textarea label="Commentaire" rows="4" ng-model="utilisateur.commentaire"></xin-textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <xin-checkbox label="Je participe a titre professionnel" ng-model="utilisateur.professionnel"></xin-checkbox>
+    </div>
+    <div class="col-sm-6">
+      <xin-checkbox label="J'accepte que mes observations soit publiées sous license publique" ng-model="utilisateur.donnees_publiques"></xin-checkbox>
+    </div>
+  </div>
+  <xin-submit></xin-submit>
+</xin-form>
